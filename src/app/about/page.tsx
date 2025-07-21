@@ -16,7 +16,7 @@ export default function AboutPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">About Us</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            At EstateIQ, we're transforming real estate discovery with advanced analytics and global accessibility.
+            At EstateIQ, we&#39;re transforming real estate discovery with advanced analytics and global accessibility.
           </p>
         </motion.div>
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <CardContent className="pt-6 space-y-4">
               <h2 className="text-2xl font-semibold">💡 Why EstateIQ?</h2>
               <p className="text-muted-foreground">
-                Whether you're a buyer, investor, or simply curious, our mission is to empower you with clarity and confidence in real estate decisions.
+                Whether you&#39;re a buyer, investor, or simply curious, our mission is to empower you with clarity and confidence in real estate decisions.
               </p>
             </CardContent>
           </Card>
@@ -52,10 +52,19 @@ export default function AboutPage() {
             <CardContent className="pt-6 space-y-4">
               <h2 className="text-2xl font-semibold">🚀 Our Future</h2>
               <p className="text-muted-foreground">
-                We're building tools that adapt to your needs. From predictive pricing to international expansion, EstateIQ is just getting started.
+                We&#39;re building tools that adapt to your needs. From predictive pricing to international expansion, EstateIQ is just getting started.
               </p>
             </CardContent>
           </Card>
+        </div>
+
+        <div className="space-y-6">
+          <p className="text-muted-foreground">
+            Founded in 2024, EstateIQ began as a small group of enthusiasts passionate about demystifying property markets. Today our platform helps thousands of users explore opportunities worldwide.
+          </p>
+          <p className="text-muted-foreground">
+            Our commitment is to blend cutting-edge analytics with a human-centered approach so that finding your next investment is both intuitive and transparent.
+          </p>
         </div>
 
         <Separator />
