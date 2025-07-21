@@ -1,0 +1,29 @@
+// schema.prisma
+
+// schema.prisma
+datasource db {
+provider = "sqlite"
+url = "file:./dev.db"
+}
+
+generator client {
+provider = "prisma-client-js"
+}
+
+model Listing {
+id Int @id @default(autoincrement())
+title String
+price Float
+size_m2 Float
+bedrooms Int
+bathrooms Int
+rooms Int
+property_type String
+ref_id String
+location String
+neighborhood String
+street String
+price_per_m2 Float
+source_url String
+scraped_at DateTime
+}
