@@ -11,30 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
-
-const mockProperties = [
-  {
-    id: 1,
-    title: "Modern Apartment in Belgrade",
-    location: "Belgrade, Serbia",
-    price: "$120,000",
-    image: "/photos/house1.jpg",
-  },
-  {
-    id: 2,
-    title: "Cozy Studio in Paris",
-    location: "Paris, France",
-    price: "$220,000",
-    image: "/photos/house2.jpg",
-  },
-  {
-    id: 3,
-    title: "Luxury Villa in Dubai",
-    location: "Dubai, UAE",
-    price: "$1,200,000",
-    image: "/photos/house3.jpg",
-  },
-];
+import { mockProperties } from "./data";
 
 export default function BrowsePage() {
   const [query, setQuery] = useState("");
@@ -83,16 +60,21 @@ export default function BrowsePage() {
 
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
           {filtered.map((property) => (
-            <Card key={property.id} className="overflow-hidden">
-              <img src={property.image} alt="" className="h-48 w-full object-cover" />
-              <CardHeader>
-                <CardTitle>{property.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                <div>{property.location}</div>
-                <div>{property.price}</div>
-              </CardContent>
-            </Card>
+            <Link key={property.id} href={`/browse/${property.id}`} className="block">
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+                <img src={property.image} alt="" className="h-48 w-full object-cover" />
+                <CardHeader>
+                  <CardTitle>{property.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground space-y-1">
+                  <div>{property.location}</div>
+                  <div>{property.price}</div>
+                  <div>
+                    {property.bedrooms} bd • {property.bathrooms} ba • {property.area}
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
