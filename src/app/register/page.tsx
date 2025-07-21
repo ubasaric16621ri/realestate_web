@@ -13,18 +13,30 @@ export default function RegisterPage() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [phone, setPhone] = useState("")
   const [error, setError] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!name || !email || !password) {
+    if (!name || !email || !phone || !password || !confirmPassword) {
       setError("All fields are required")
       return
     }
 
     if (!email.includes("@")) {
       setError("Please enter a valid email")
+      return
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match")
+      return
+    }
+
+    if (!/^[+\d][\d\s-]{6,}$/.test(phone)) {
+      setError("Please enter a valid phone number")
       return
     }
 
@@ -73,6 +85,25 @@ export default function RegisterPage() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirm">Confirm Password</Label>
+              <Input
+                id="confirm"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+1 555 123 4567"
+              />
+            </div>
 
             {error && (
               <div className="text-sm text-red-500 font-medium">{error}</div>
@@ -91,6 +122,9 @@ export default function RegisterPage() {
             </Link>
           </p>
         </CardFooter>
+        <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+          By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </div>
       </Card>
     </div>
   )
